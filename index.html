@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IND Location - Votre agence de location de voitures</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">IND Location</div>
+        <ul class="nav-links">
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#flotte">Nos Véhicules</a></li>
+            <li><a href="#reservation">Réserver</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="nav-button">Appelez-nous : 01 23 45 67 89</button>
+    </nav>
+
+    <section id="accueil" class="hero">
+        <div class="hero-content">
+            <h1>Liberté de mouvement avec IND Location</h1>
+            <p>Louez votre voiture idéale pour un week-end ou un long voyage. Simple, rapide et au meilleur prix.</p>
+            <a href="#reservation" class="cta-button">Réserver en 3 clics</a>
+        </div>
+        
+    </section>
+
+    <section id="flotte" class="flotte-section">
+        <h2>Découvrez notre flotte de véhicules</h2>
+        <div class="vehicle-list">
+            
+            <div class="vehicle-card">
+                <img src="placeholder_citadine.jpg" alt="Petite Citadine" class="vehicle-image">
+                <h3>Petite Citadine</h3>
+                <p class="description">Parfaite pour la ville et les petits budgets. Économique et facile à garer.</p>
+                <div class="features">
+                    <span>⛽️ Essence</span>
+                    <span>👤 4 places</span>
+                    <span>⚙️ Manuelle</span>
+                </div>
+                <div class="price">35€ / jour</div>
+                <a href="#reservation" class="reserve-btn">Réserver ce modèle</a>
+            </div>
+
+            <div class="vehicle-card">
+                <img src="placeholder_berline.jpg" alt="Berline Confort" class="vehicle-image">
+                <h3>Berline Confort</h3>
+                <p class="description">Idéale pour les longs trajets. Confort et espace garantis.</p>
+                <div class="features">
+                    <span>⛽️ Diesel</span>
+                    <span>👤 5 places</span>
+                    <span>⚙️ Automatique</span>
+                </div>
+                <div class="price">60€ / jour</div>
+                <a href="#reservation" class="reserve-btn">Réserver ce modèle</a>
+            </div>
+
+            <div class="vehicle-card">
+                <img src="placeholder_suv.jpg" alt="SUV Familial" class="vehicle-image">
+                <h3>SUV Familial</h3>
+                <p class="description">Le choix parfait pour les familles et les grandes aventures.</p>
+                <div class="features">
+                    <span>⛽️ Hybride</span>
+                    <span>👤 7 places</span>
+                    <span>⚙️ Automatique</span>
+                </div>
+                <div class="price">85€ / jour</div>
+                <a href="#reservation" class="reserve-btn">Réserver ce modèle</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="reservation" class="reservation-section">
+        <h2>📅 Réservez votre véhicule en ligne</h2>
+        <form id="formReservation">
+            <label for="date_debut">Date de début :</label>
+            <input type="date" id="date_debut" name="date_debut" required>
+
+            <label for="date_fin">Date de fin :</label>
+            <input type="date" id="date_fin" name="date_fin" required>
+
+            <label for="vehicule">Véhicule :</label>
+            <select id="vehicule" name="vehicule" required>
+                <option value="">-- Choisir un modèle --</option>
+                <option value="petite_citadine" data-prix="35">Petite Citadine (35€/jour)</option>
+                <option value="berline" data-prix="60">Berline Confort (60€/jour)</option>
+                <option value="suv" data-prix="85">SUV Familial (85€/jour)</option>
+            </select>
+
+            <p id="prixTotal">Prix estimé : **0 €**</p>
+            
+            <button type="submit">Confirmer la Réservation</button>
+        </form>
+    </section>
+    
+    <section id="contact" class="contact-section">
+        <h2>💬 Une question ? Contactez-nous !</h2>
+        <form id="formContact">
+            <label for="nom">Nom Complet :</label>
+            <input type="text" id="nom" name="nom" required>
+
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Votre Message :</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit">Envoyer le message</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>IND Location - Votre partenaire mobilité.</p>
+            <div class="footer-links">
+                <a href="#">Conditions Générales</a> |
+                <a href="#">Mentions Légales</a> |
+                <a href="#">FAQ</a>
+            </div>
+            <p>&copy; 2025 Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

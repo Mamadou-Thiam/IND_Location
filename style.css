@@ -1,0 +1,394 @@
+/* ==================================== */
+/* 1. Styles de base et mise en page générale */
+/* ==================================== */
+:root {
+    --color-primary: #0056b3; /* Bleu de marque */
+    --color-secondary: #28a745; /* Vert CTA */
+    --color-accent: #ffc107; /* Jaune d'appel */
+    --color-dark: #333;
+    --color-light: #f4f4f9;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-light);
+    color: var(--color-dark);
+    scroll-behavior: smooth; 
+}
+
+h1, h2, h3 {
+    color: var(--color-primary);
+}
+
+section {
+    padding: 40px 5%;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+/* Styles pour les sections d'information/formulaires */
+.reservation-section, .contact-section {
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+}
+
+/* ==================================== */
+/* 2. Navbar et Navigation */
+/* ==================================== */
+.navbar {
+    background-color: var(--color-primary);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    position: sticky; 
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+.nav-links li a:hover {
+    background-color: #003366;
+}
+
+.nav-button {
+    background-color: var(--color-accent); 
+    color: var(--color-dark);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+    background-color: #e0a800;
+}
+
+/* Masquer le menu hamburger par défaut (pour les grandes vues) */
+.menu-toggle {
+    display: none;
+}
+
+/* ==================================== */
+/* 3. Hero Section */
+/* ==================================== */
+.hero {
+    background: url('hero-background.jpg') no-repeat center center/cover;
+    /* Utilisez une image de voiture moderne dans un beau décor ici */
+    height: 60vh; 
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    /* Effet de fondu pour le texte sur l'image */
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5); 
+}
+
+.hero-content h1 {
+    font-size: 3em;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 5px #000;
+    color: white; /* S'assurer que le titre est bien visible */
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+}
+
+.cta-button {
+    background-color: var(--color-secondary); 
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #218838;
+}
+
+/* ==================================== */
+/* 4. Flotte de Véhicules (Composants Card) */
+/* ==================================== */
+.flotte-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 3px solid var(--color-primary);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.vehicle-list {
+    display: grid;
+    /* Crée une grille adaptable, min 300px par colonne */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px;
+}
+
+.vehicle-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden; /* Pour que l'image ne dépasse pas */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.vehicle-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.vehicle-image {
+    width: 100%;
+    height: 200px; /* Taille fixe pour l'image */
+    object-fit: cover; /* Assure que l'image couvre sans déformation */
+}
+
+.vehicle-card h3 {
+    margin: 15px 15px 5px 15px;
+    font-size: 1.5em;
+}
+
+.description {
+    padding: 0 15px;
+    color: #666;
+    font-size: 0.95em;
+    min-height: 40px; /* Assure un alignement même avec des descriptions courtes */
+}
+
+.features {
+    padding: 10px 15px;
+    border-top: 1px solid #eee;
+    margin-top: 15px;
+}
+
+.features span {
+    display: inline-block;
+    background-color: var(--color-light);
+    color: var(--color-dark);
+    padding: 5px 8px;
+    border-radius: 3px;
+    margin: 5px 5px 0 0;
+    font-size: 0.85em;
+}
+
+.price {
+    font-size: 1.6em;
+    color: #dc3545; /* Prix en rouge pour attirer l'attention */
+    font-weight: bold;
+    padding: 0 15px 15px 15px;
+}
+
+.reserve-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: var(--color-accent);
+    color: var(--color-dark);
+    padding: 15px 0;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.reserve-btn:hover {
+    background-color: #e0a800;
+}
+
+/* ==================================== */
+/* 5. Styles des Formulaires */
+/* ==================================== */
+form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="date"],
+form select,
+form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box; 
+    font-size: 1em;
+}
+
+form textarea {
+    resize: vertical;
+}
+
+form button[type="submit"] {
+    background-color: var(--color-secondary); 
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+form button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+#prixTotal {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e9ecef;
+    border: 1px dashed #ccc;
+    border-radius: 6px;
+    font-size: 1.2em;
+    font-weight: normal;
+}
+
+#prixTotal strong {
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+/* ==================================== */
+/* 6. Footer */
+/* ==================================== */
+footer {
+    background-color: #222;
+    color: #ccc;
+    padding: 25px 5%;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content p {
+    margin: 10px 0;
+}
+
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+/* ==================================== */
+/* 7. Media Queries (Adaptation Mobile) */
+/* ==================================== */
+
+/* Tablette et Mobile */
+@media (max-width: 900px) {
+    .navbar .nav-button {
+        display: none; /* Masquer le bouton d'appel sur les petites vues */
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+}
+
+/* Mobile uniquement */
+@media (max-width: 768px) {
+    
+    /* Navbar pour mobile */
+    .navbar {
+        flex-wrap: wrap; /* Permet aux éléments de passer à la ligne */
+        padding: 15px 20px;
+    }
+
+    .nav-links {
+        /* Le menu devient une colonne et prend toute la largeur */
+        flex-direction: column;
+        width: 100%;
+        display: none; /* Masqué par défaut (on aurait besoin de JS pour le basculer) */
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex; /* Affiché quand la classe 'active' est ajoutée par JS */
+    }
+
+    .nav-links li a {
+        padding: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Section Hero */
+    .hero {
+        height: 50vh;
+    }
+    
+    .hero-content h1 {
+        font-size: 2em;
+    }
+    
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+
+    /* Flotte de Véhicules */
+    .vehicle-list {
+        /* Les cartes s'empilent sur mobile */
+        grid-template-columns: 1fr; 
+    }
+    
+    .vehicle-image {
+        height: 250px;
+    }
+    
+    /* Formulaires */
+    .reservation-section, .contact-section {
+        padding: 20px;
+    }
+    
+    /* Footer */
+    .footer-links a {
+        display: block;
+        margin: 10px 0;
+    }
+}
