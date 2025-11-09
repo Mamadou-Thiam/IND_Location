@@ -1,5 +1,5 @@
 /* ==================================== */
-/* 1. Styles de base et mise en page générale */
+/* 1. Variables et Styles de Base */
 /* ==================================== */
 :root {
     --color-primary: #0056b3; /* Bleu de marque */
@@ -28,15 +28,24 @@ section {
     max-width: 1200px;
 }
 
-/* Styles pour les sections d'information/formulaires */
-.reservation-section, .contact-section {
-    background-color: white;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
-    border-radius: 8px;
+.cta-button {
+    background-color: var(--color-accent);
+    color: var(--color-dark);
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #ffda6a;
 }
 
 /* ==================================== */
-/* 2. Navbar et Navigation */
+/* 2. Navbar et Menu Responsive */
 /* ==================================== */
 .navbar {
     background-color: var(--color-primary);
@@ -71,7 +80,7 @@ section {
 }
 
 .nav-links li a:hover {
-    background-color: #003366;
+    background-color: #004494;
 }
 
 .nav-button {
@@ -86,150 +95,142 @@ section {
 }
 
 .nav-button:hover {
-    background-color: #e0a800;
+    background-color: #ffda6a;
 }
 
-/* Masquer le menu hamburger par défaut (pour les grandes vues) */
 .menu-toggle {
-    display: none;
+    display: none; /* Masqué sur les écrans larges */
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8em;
+    cursor: pointer;
 }
 
 /* ==================================== */
 /* 3. Hero Section */
 /* ==================================== */
 .hero {
-    background: url('hero-background.jpg') no-repeat center center/cover;
-    /* Utilisez une image de voiture moderne dans un beau décor ici */
-    height: 60vh; 
-    min-height: 400px;
+    background: url('assets/hero.jpg') no-repeat center center/cover;
+    height: 60vh;
     display: flex;
-    justify-content: center;
     align-items: center;
-    text-align: center;
+    justify-content: flex-start;
     color: white;
-    /* Effet de fondu pour le texte sur l'image */
-    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5); 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    margin-top: 0; /* Colle à la navbar */
+    border-radius: 0;
 }
 
-.hero-content h1 {
+.hero-content {
+    max-width: 600px;
+    margin-left: 5%;
+}
+
+.hero h1 {
     font-size: 3em;
-    margin-bottom: 15px;
-    text-shadow: 2px 2px 5px #000;
-    color: white; /* S'assurer que le titre est bien visible */
-}
-
-.hero-content p {
-    font-size: 1.2em;
-    margin-bottom: 40px;
-}
-
-.cta-button {
-    background-color: var(--color-secondary); 
+    margin: 0 0 10px;
     color: white;
-    text-decoration: none;
-    padding: 15px 30px;
-    border-radius: 50px;
-    font-size: 1.1em;
-    font-weight: bold;
-    transition: background-color 0.3s;
 }
 
-.cta-button:hover {
-    background-color: #218838;
+.hero p {
+    font-size: 1.2em;
+    margin: 0;
 }
 
 /* ==================================== */
-/* 4. Flotte de Véhicules (Composants Card) */
+/* 4. Section Flotte (Véhicules) */
 /* ==================================== */
-.flotte-section h2 {
+.flotte-section {
     text-align: center;
-    margin-bottom: 30px;
-    border-bottom: 3px solid var(--color-primary);
-    display: inline-block;
-    padding-bottom: 5px;
 }
 
 .vehicle-list {
-    display: grid;
-    /* Crée une grille adaptable, min 300px par colonne */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    display: flex;
+    justify-content: center;
     gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
 }
 
 .vehicle-card {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    overflow: hidden; /* Pour que l'image ne dépasse pas */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 300px;
+    text-align: left;
+    transition: transform 0.3s;
 }
 
 .vehicle-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .vehicle-image {
     width: 100%;
-    height: 200px; /* Taille fixe pour l'image */
-    object-fit: cover; /* Assure que l'image couvre sans déformation */
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 15px;
 }
 
 .vehicle-card h3 {
-    margin: 15px 15px 5px 15px;
-    font-size: 1.5em;
-}
-
-.description {
-    padding: 0 15px;
-    color: #666;
-    font-size: 0.95em;
-    min-height: 40px; /* Assure un alignement même avec des descriptions courtes */
-}
-
-.features {
-    padding: 10px 15px;
-    border-top: 1px solid #eee;
-    margin-top: 15px;
+    margin-top: 0;
+    color: var(--color-primary);
 }
 
 .features span {
     display: inline-block;
-    background-color: var(--color-light);
-    color: var(--color-dark);
-    padding: 5px 8px;
-    border-radius: 3px;
-    margin: 5px 5px 0 0;
-    font-size: 0.85em;
+    background-color: #e9ecef;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    margin-right: 5px;
+    margin-bottom: 5px;
 }
 
 .price {
-    font-size: 1.6em;
-    color: #dc3545; /* Prix en rouge pour attirer l'attention */
+    font-size: 1.4em;
     font-weight: bold;
-    padding: 0 15px 15px 15px;
+    color: var(--color-secondary);
+    margin: 15px 0;
 }
 
 .reserve-btn {
-    display: block;
-    width: 100%;
-    text-align: center;
-    background-color: var(--color-accent);
-    color: var(--color-dark);
-    padding: 15px 0;
+    background-color: var(--color-secondary);
+    color: white;
     text-decoration: none;
-    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
     transition: background-color 0.3s;
 }
 
 .reserve-btn:hover {
-    background-color: #e0a800;
+    background-color: #218838;
 }
 
 /* ==================================== */
-/* 5. Styles des Formulaires */
+/* 5. Formulaires (Réservation & Contact) */
 /* ==================================== */
+.reservation-section, .contact-section {
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+}
+
+.reservation-section h2, .contact-section h2 {
+    text-align: center;
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}
+
 form label {
     display: block;
     margin-top: 15px;
@@ -250,10 +251,6 @@ form textarea {
     font-size: 1em;
 }
 
-form textarea {
-    resize: vertical;
-}
-
 form button[type="submit"] {
     background-color: var(--color-secondary); 
     color: white;
@@ -265,6 +262,7 @@ form button[type="submit"] {
     font-size: 1.1em;
     font-weight: bold;
     transition: background-color 0.3s;
+    width: 100%;
 }
 
 form button[type="submit"]:hover {
@@ -279,116 +277,143 @@ form button[type="submit"]:hover {
     border-radius: 6px;
     font-size: 1.2em;
     font-weight: normal;
-}
-
-#prixTotal strong {
-    font-weight: bold;
-    color: var(--color-primary);
+    text-align: center;
 }
 
 /* ==================================== */
 /* 6. Footer */
 /* ==================================== */
 footer {
-    background-color: #222;
-    color: #ccc;
-    padding: 25px 5%;
+    background-color: var(--color-dark);
+    color: white;
+    padding: 20px 5%;
     text-align: center;
-}
-
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.footer-content p {
-    margin: 10px 0;
+    margin-top: 40px;
 }
 
 .footer-links a {
-    color: #ccc;
+    color: var(--color-accent);
     text-decoration: none;
-    margin: 0 15px;
+    margin: 0 10px;
+}
+
+/* ==================================== */
+/* 7. Pop-up de Soumission (Modal) */
+/* ==================================== */
+.popup-message {
+    display: none; 
+    position: fixed; 
+    z-index: 2000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6); 
+    backdrop-filter: blur(3px); 
+}
+
+.popup-content {
+    background-color: white;
+    margin: 15% auto; 
+    padding: 30px;
+    border: 1px solid var(--color-secondary);
+    width: 90%; 
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    animation: fadeIn 0.5s;
+}
+
+.popup-content h3 {
+    color: var(--color-secondary); 
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.popup-detail {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px dashed #ddd;
+    font-size: 0.9em;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
     transition: color 0.3s;
 }
 
-.footer-links a:hover {
-    color: white;
+.close-btn:hover {
+    color: #333;
 }
 
-/* ==================================== */
-/* 7. Media Queries (Adaptation Mobile) */
-/* ==================================== */
-
-/* Tablette et Mobile */
-@media (max-width: 900px) {
-    .navbar .nav-button {
-        display: none; /* Masquer le bouton d'appel sur les petites vues */
-    }
-    
-    .hero-content h1 {
-        font-size: 2.5em;
-    }
+@keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.9);}
+    to {opacity: 1; transform: scale(1);}
 }
 
-/* Mobile uniquement */
+
+/* ==================================== */
+/* 8. Media Queries (Adaptation Mobile) */
+/* ==================================== */
 @media (max-width: 768px) {
+    /* Navbar */
+    .menu-toggle {
+        display: block; 
+    }
     
-    /* Navbar pour mobile */
     .navbar {
-        flex-wrap: wrap; /* Permet aux éléments de passer à la ligne */
-        padding: 15px 20px;
+        flex-wrap: wrap; 
     }
 
     .nav-links {
-        /* Le menu devient une colonne et prend toute la largeur */
         flex-direction: column;
         width: 100%;
-        display: none; /* Masqué par défaut (on aurait besoin de JS pour le basculer) */
+        display: none; 
         text-align: center;
+        background-color: #004494; /* Fond pour le menu déroulant */
+    }
+    
+    .nav-links li a {
+        padding: 15px 0;
+        border-bottom: 1px solid #003366;
     }
 
     .nav-links.active {
-        display: flex; /* Affiché quand la classe 'active' est ajoutée par JS */
+        display: flex; 
+    }
+    
+    .nav-button {
+        display: none; /* Cache le bouton d'appel sur petit écran pour plus de place */
     }
 
-    .nav-links li a {
-        padding: 10px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    /* Section Hero */
+    /* Hero */
     .hero {
-        height: 50vh;
+        height: 40vh;
+        justify-content: center;
+        text-align: center;
     }
-    
-    .hero-content h1 {
+
+    .hero-content {
+        margin-left: 0;
+        padding: 0 10px;
+    }
+
+    .hero h1 {
         font-size: 2em;
     }
-    
-    .cta-button {
-        padding: 12px 25px;
-        font-size: 1em;
-    }
 
-    /* Flotte de Véhicules */
+    /* Flotte */
     .vehicle-list {
-        /* Les cartes s'empilent sur mobile */
-        grid-template-columns: 1fr; 
+        gap: 20px;
     }
     
-    .vehicle-image {
-        height: 250px;
-    }
-    
-    /* Formulaires */
-    .reservation-section, .contact-section {
-        padding: 20px;
-    }
-    
-    /* Footer */
-    .footer-links a {
-        display: block;
-        margin: 10px 0;
+    .vehicle-card {
+        max-width: 100%;
     }
 }

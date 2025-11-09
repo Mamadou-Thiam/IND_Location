@@ -5,18 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IND Location - Votre agence de location de voitures</title>
     <link rel="stylesheet" href="style.css">
-    </head>
+</head>
 <body>
 
+    <div id="successPopup" class="popup-message">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <h3 id="popupTitle">🎉 Succès !</h3>
+            <p id="popupText">Merci pour votre confiance ! Nous avons bien reçu votre demande et nous vous contacterons **très rapidement**.</p>
+            <p class="popup-detail">Un e-mail de confirmation sera envoyé par notre partenaire de gestion de formulaire.</p>
+        </div>
+    </div>
+    
     <nav class="navbar">
         <div class="logo">IND Location</div>
-        <ul class="nav-links">
+        <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button> 
+        <ul class="nav-links" id="navLinks"> 
             <li><a href="#accueil">Accueil</a></li>
             <li><a href="#flotte">Nos Véhicules</a></li>
             <li><a href="#reservation">Réserver</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <button class="nav-button">Appelez-nous : 01 23 45 67 89</button>
+        <button class="nav-button">Appelez-nous : 77 145 02 18</button>
     </nav>
 
     <section id="accueil" class="hero">
@@ -25,7 +35,6 @@
             <p>Louez votre voiture idéale pour un week-end ou un long voyage. Simple, rapide et au meilleur prix.</p>
             <a href="#reservation" class="cta-button">Réserver en 3 clics</a>
         </div>
-        
     </section>
 
     <section id="flotte" class="flotte-section">
@@ -33,7 +42,7 @@
         <div class="vehicle-list">
             
             <div class="vehicle-card">
-                <img src="placeholder_citadine.jpg" alt="Petite Citadine" class="vehicle-image">
+                <img src="assets/citadine.jpg" alt="Petite Citadine" class="vehicle-image">
                 <h3>Petite Citadine</h3>
                 <p class="description">Parfaite pour la ville et les petits budgets. Économique et facile à garer.</p>
                 <div class="features">
@@ -46,7 +55,7 @@
             </div>
 
             <div class="vehicle-card">
-                <img src="placeholder_berline.jpg" alt="Berline Confort" class="vehicle-image">
+                <img src="assets/berline.jpg" alt="Berline Confort" class="vehicle-image">
                 <h3>Berline Confort</h3>
                 <p class="description">Idéale pour les longs trajets. Confort et espace garantis.</p>
                 <div class="features">
@@ -59,7 +68,7 @@
             </div>
 
             <div class="vehicle-card">
-                <img src="placeholder_suv.jpg" alt="SUV Familial" class="vehicle-image">
+                <img src="assets/suv.jpg" alt="SUV Familial" class="vehicle-image">
                 <h3>SUV Familial</h3>
                 <p class="description">Le choix parfait pour les familles et les grandes aventures.</p>
                 <div class="features">
@@ -76,11 +85,14 @@
 
     <section id="reservation" class="reservation-section">
         <h2>📅 Réservez votre véhicule en ligne</h2>
-        <form action="https://formspree.io/f/xqawzlnp"  method="post" >
-            <label for="date_debut">Nom Complet :</label>
-            <input type="text" id="nom" name="nom" required>
-            <label for="date_debut">Votre Contact :</label>
-            <input type="text" id="contact" name="contact" required>
+        <form action="https://formspree.io/f/xqawzlnp" id="formReservation" method="post" > 
+            
+            <label for="nom_reservation">Nom Complet :</label>
+            <input type="text" id="nom_reservation" name="Nom_Client" required>
+            
+            <label for="contact_reservation">Votre Contact (Email ou Téléphone) :</label>
+            <input type="text" id="contact_reservation" name="Contact_Client" required>
+            
             <label for="date_debut">Date de début :</label>
             <input type="date" id="date_debut" name="date_debut" required>
 
@@ -103,7 +115,7 @@
     
     <section id="contact" class="contact-section">
         <h2>💬 Une question ? Contactez-nous !</h2>
-        <form id="formContact">
+        <form id="formContact" action="https://formspree.io/f/xqawzlnp" method="post">
             <label for="nom">Nom Complet :</label>
             <input type="text" id="nom" name="nom" required>
 
