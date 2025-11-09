@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.getElementById('navLinks'); 
     
+    // NOUVELLE LIGNE : Pour gérer les liens et la fermeture du menu après un clic
+    const navItems = navLinks ? navLinks.querySelectorAll('a') : []; 
+    
     // Pop-up elements
     const successPopup = document.getElementById('successPopup');
     const popupTitle = document.getElementById('popupTitle');
@@ -27,9 +30,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Gestion du menu mobile
+    // Gestion du menu mobile (CODE CORRIGÉ)
     if (navLinks) {
-        // ... (Logique du menu mobile identique à l'étape précédente) ...
+        
+        // 🎯 LOGIQUE AJOUTÉE/CORRIGÉE : Activation du menu au clic du bouton
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+
+        // Fermeture du menu après un clic sur un lien (UX Mobile)
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
     }
 
     // Événements pour fermer le pop-up
