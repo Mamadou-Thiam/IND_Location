@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const calculerPrix = () => {
         // Logique de calcul du prix (inchangée et fonctionnelle)
         if (!dateDebutInput.value || !dateFinInput.value || !vehiculeSelect.value) {
-            prixTotalElement.innerHTML = 'Prix estimé : **0 €**';
+            prixTotalElement.innerHTML = 'Prix estimé : **0  F cfa**';
             return;
         }
 
@@ -156,3 +156,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+// ====================================
+    // D. Animation "Reveal on Scroll"
+    // ====================================
+    const revealElements = document.querySelectorAll('.reveal-item');
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Si l'élément est visible, ajouter la classe 'reveal-visible'
+                entry.target.classList.add('reveal-visible');
+                // Arrêter d'observer cet élément après l'animation
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        // Marge de 50px pour déclencher l'animation un peu plus tôt
+        rootMargin: '0px 0px -50px 0px', 
+        threshold: 0.1 // Déclenchement à 10% de visibilité
+    });
+
+    revealElements.forEach(element => {
+        observer.observe(element);
+    });
