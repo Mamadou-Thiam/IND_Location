@@ -417,3 +417,44 @@ footer {
         max-width: 100%;
     }
 }
+
+
+/* ==================================== */
+/* Styles du Bouton Flottant WhatsApp (Positionné à Gauche) */
+/* ==================================== */
+.whatsapp-float {
+    position: fixed; /* Reste visible même en défilant */
+    width: 60px;
+    height: 60px;
+    bottom: 40px;  /* Distance du bas */
+    left: 40px;   /* 🎯 NOUVEAU : Distance de la gauche */
+    /* REMARQUE : Assurez-vous d'enlever 'right: XXpx;' si elle existait */
+    
+    background-color: #25d366; 
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 28px;
+    line-height: 60px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 1500;
+    transition: transform 0.3s;
+}
+
+.whatsapp-float:hover {
+    background-color: #128c7e;
+    transform: scale(1.05);
+}
+
+/* Ajustement pour les petits écrans (Mobile) */
+@media (max-width: 768px) {
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        left: 20px;   /* 🎯 NOUVEAU : Distance de la gauche pour mobile */
+        /* REMARQUE : Assurez-vous d'enlever 'right: XXpx;' si elle existait */
+        font-size: 24px;
+        line-height: 50px;
+    }
+}
