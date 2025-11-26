@@ -269,7 +269,10 @@ form label {
     font-weight: bold;
 }
 
+
+
 form input[type="text"],
+form input[type="tel"],
 form input[type="email"],
 form input[type="date"],
 form select,

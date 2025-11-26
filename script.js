@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ====================================
     const formReservation = document.getElementById('formReservation');
     const dateDebutInput = document.getElementById('date_debut');
+
     const dateFinInput = document.getElementById('date_fin');
     const vehiculeSelect = document.getElementById('vehicule');
     const prixTotalElement = document.getElementById('prixTotal');
@@ -181,3 +182,9 @@ document.addEventListener('DOMContentLoaded', () => {
     revealElements.forEach(element => {
         observer.observe(element);
     });
+
+
+
+
+
+

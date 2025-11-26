@@ -11,6 +11,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -171,12 +173,13 @@
         <input type="text" id="nom_reservation" name="Nom_Client" required />
 
         <label for="contact_reservation"
-          >Votre Contact (Email ou Téléphone) :</label
+          >Numéro de Téléphone :</label
         >
         <input
+          
           type="text"
-          id="contact_reservation"
-          name="Contact_Client"
+          id="telephone"
+          name="telephone"
           required
         />
 
