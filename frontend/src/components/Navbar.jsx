@@ -31,7 +31,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <Link to="/tableau-de-bord" className="navbar-brand">
+      <Link to="/" className="navbar-brand">
         <div style={{ width: 40, height: 40, borderRadius: 10, background: 'var(--secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 800, fontSize: '1rem' }}>IL</div>
         IND Location
       </Link>
