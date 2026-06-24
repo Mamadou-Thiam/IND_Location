@@ -28,8 +28,8 @@ services:
   - type: static
     name: ind-location-frontend
     region: frankfurt
-    buildCommand: cd frontend && npm install && npm run build:prod
-    staticPublishPath: frontend/dist
+    buildCommand: cd frontend && npm install && npm run build:prod && cp -r dist ../dist
+    staticPublishPath: dist
     headers:
       - path: /**
         name: Cache-Control
