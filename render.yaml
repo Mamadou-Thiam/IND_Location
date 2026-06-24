@@ -41,6 +41,3 @@ services:
       - type: rewrite
         source: /api/*
         destination: https://ind-location-api.onrender.com/api/:splat
-      - type: rewrite
-        source: /*
-        destination: /index.html
