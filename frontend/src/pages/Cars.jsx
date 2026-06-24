@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+import { FiClock, FiUsers, FiTool } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 import api from '../api/axios';
 import { useAuth } from '../context/AuthContext';
@@ -78,30 +78,47 @@ const Cars = () => {
         </div>
       </div>
 
-      <div className="landing-fleet-grid">
+      <div className="cars-grid">
         {voitures.map((voiture) => (
-          <div key={voiture._id} className="landing-fleet-card">
+          <div key={voiture._id} className="card">
             <img
+              className="card-img"
               src={optimiserImage(voiture.image, { w: 400, h: 200 }) || 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=400&q=60'}
               alt={voiture.nom}
             />
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '16px 20px 8px' }}>
-              <h3 style={{ margin: 0, fontSize: '1.15rem', fontWeight: 700, color: 'var(--secondary)' }}>{voiture.nom}</h3>
-              <span className={`badge ${voiture.disponible ? 'badge-success' : 'badge-danger'}`}>
-                {voiture.disponible ? 'Disponible' : 'Indisponible'}
-              </span>
+            <div className="card-body">
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+                <h3 className="card-title" style={{ margin: 0 }}>{voiture.nom}</h3>
+                <span className={`badge ${voiture.disponible ? 'badge-success' : 'badge-danger'}`}>
+                  {voiture.disponible ? 'Disponible' : 'Indisponible'}
+                </span>
+              </div>
+              <p className="card-text">{voiture.description}</p>
+              <div style={{ display: 'flex', gap: 16, marginBottom: 12, fontSize: '0.85rem', color: 'var(--gray-600)' }}>
+                <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                  <FiUsers /> {voiture.places} places
+                </span>
+                <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                  <FiTool /> {voiture.transmission}
+                </span>
+                <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                  <FiClock /> {voiture.categorie}
+                </span>
+              </div>
+              <div className="card-price">
+                {voiture.prixParJour?.toLocaleString()} F{' '}
+                <span>/ jour</span>
+              </div>
             </div>
-            <p className="landing-fleet-desc">{voiture.description || 'Parfaite pour tous vos déplacements.'}</p>
-            <div className="landing-fleet-features">
-              <span>👤 {voiture.places} places</span>
-              <span>⚙️ {voiture.transmission}</span>
-              <span>⛽️ {voiture.categorie}</span>
-            </div>
-            <div className="landing-fleet-price">{voiture.prixParJour?.toLocaleString()} F <span>/ jour</span></div>
-            {voiture.disponible ? (
-              <button className="landing-fleet-btn" onClick={() => openReserve(voiture)}>Réserver ce modèle</button>
-            ) : (
-              <button className="landing-fleet-btn" style={{ background: 'var(--gray-400)', cursor: 'not-allowed' }} disabled>Indisponible</button>
+            {voiture.disponible && (
+              <div className="card-footer">
+                <button
+                  className="btn btn-primary btn-sm"
+                  onClick={() => openReserve(voiture)}
+                >
+                  Réserver
+                </button>
+              </div>
             )}
           </div>
         ))}

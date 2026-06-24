@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaWhatsapp, FaCalendarAlt, FaPlaneDeparture, FaRoute } from 'react-icons/fa';
+import { FiUsers, FiTool, FiClock } from 'react-icons/fi';
 import api from '../api/axios';
 import { optimiserImage } from '../utils/image';
 
@@ -91,17 +92,40 @@ const Landing = () => {
         <h2>Découvrez notre flotte de véhicules</h2>
         <div className="landing-fleet-grid">
           {voitures.map((v) => (
-            <div key={v._id} className="landing-fleet-card">
-              <img src={optimiserImage(v.image, { w: 400, h: 200 }) || 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=400&q=60'} alt={v.nom} />
-              <h3>{v.nom}</h3>
-              <p className="landing-fleet-desc">{v.description || `Parfaite pour tous vos déplacements.`}</p>
-              <div className="landing-fleet-features">
-                <span>👤 {v.places} places</span>
-                <span>⚙️ {v.transmission}</span>
-                <span>⛽️ {v.categorie}</span>
+            <div key={v._id} className="card">
+              <img
+                className="card-img"
+                src={optimiserImage(v.image, { w: 400, h: 200 }) || 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=400&q=60'}
+                alt={v.nom}
+              />
+              <div className="card-body">
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+                  <h3 className="card-title" style={{ margin: 0 }}>{v.nom}</h3>
+                  <span className={`badge ${v.disponible ? 'badge-success' : 'badge-danger'}`}>
+                    {v.disponible ? 'Disponible' : 'Indisponible'}
+                  </span>
+                </div>
+                <p className="card-text">{v.description || 'Parfaite pour tous vos déplacements.'}</p>
+                <div style={{ display: 'flex', gap: 16, marginBottom: 12, fontSize: '0.85rem', color: 'var(--gray-600)' }}>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                    <FiUsers /> {v.places} places
+                  </span>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                    <FiTool /> {v.transmission}
+                  </span>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                    <FiClock /> {v.categorie}
+                  </span>
+                </div>
+                <div className="card-price">
+                  {v.prixParJour?.toLocaleString()} F <span>/ jour</span>
+                </div>
               </div>
-              <div className="landing-fleet-price">{v.prixParJour?.toLocaleString()} F <span>/ jour</span></div>
-              <button className="landing-fleet-btn" onClick={() => navigate('/connexion')}>Réserver ce modèle</button>
+              {v.disponible && (
+                <div className="card-footer">
+                  <button className="btn btn-primary btn-sm" onClick={() => navigate('/connexion')}>Réserver</button>
+                </div>
+              )}
             </div>
           ))}
         </div>
