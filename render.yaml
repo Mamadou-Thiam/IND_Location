@@ -37,8 +37,6 @@ services:
     envVars:
       - key: VITE_API_URL
         value: https://ind-location-api.onrender.com/api
-      - key: CI
-        value: false
     routes:
       - type: rewrite
         source: /api/*
