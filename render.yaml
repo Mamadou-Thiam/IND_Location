@@ -28,12 +28,17 @@ services:
   - type: static
     name: ind-location-frontend
     region: frankfurt
-    rootDir: frontend
-    buildCommand: npm install && npm run build:prod
-    staticPublishPath: dist
+    buildCommand: npm install --prefix frontend && npm run build:prod --prefix frontend
+    staticPublishPath: frontend/dist
+    headers:
+      - path: /**
+        name: Cache-Control
+        value: no-cache
     envVars:
       - key: VITE_API_URL
         value: https://ind-location-api.onrender.com/api
+      - key: CI
+        value: false
     routes:
       - type: rewrite
         source: /api/*
