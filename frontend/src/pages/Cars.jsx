@@ -3,6 +3,7 @@ import { FiClock, FiUsers, FiTool } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 import api from '../api/axios';
 import { useAuth } from '../context/AuthContext';
+import { optimiserImage } from '../utils/image';
 
 const Cars = () => {
   const [voitures, setVoitures] = useState([]);
@@ -82,7 +83,7 @@ const Cars = () => {
           <div key={voiture._id} className="card">
             <img
               className="card-img"
-              src={voiture.image || '/assets/hero_img.png'}
+              src={optimiserImage(voiture.image, { w: 400, h: 200 }) || 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=400&q=60'}
               alt={voiture.nom}
             />
             <div className="card-body">

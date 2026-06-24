@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaWhatsapp, FaCalendarAlt, FaPlaneDeparture, FaRoute } from 'react-icons/fa';
 import api from '../api/axios';
+import { optimiserImage } from '../utils/image';
 
 const Landing = () => {
   const [voitures, setVoitures] = useState([]);
@@ -91,7 +92,7 @@ const Landing = () => {
         <div className="landing-fleet-grid">
           {voitures.map((v) => (
             <div key={v._id} className="landing-fleet-card">
-              <img src={v.image || 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=400&q=60'} alt={v.nom} />
+              <img src={optimiserImage(v.image, { w: 400, h: 200 }) || 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=400&q=60'} alt={v.nom} />
               <h3>{v.nom}</h3>
               <p className="landing-fleet-desc">{v.description || `Parfaite pour tous vos déplacements.`}</p>
               <div className="landing-fleet-features">

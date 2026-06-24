@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FiMail, FiLock, FiUser, FiPhone } from 'react-icons/fi';
+import { FiMail, FiLock, FiUser, FiPhone, FiArrowLeft } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 import { useAuth } from '../context/AuthContext';
 
@@ -49,6 +49,9 @@ const Register = () => {
   return (
     <div className="auth-page">
       <div className="auth-left">
+        <Link to="/" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: 'var(--gray-500)', fontSize: '0.85rem', marginBottom: 16, textDecoration: 'none' }}>
+          <FiArrowLeft size={14} /> Retour à l'accueil
+        </Link>
         <div className="auth-logo">
           <div style={{ width: 48, height: 48, borderRadius: 12, background: 'var(--secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 800, fontSize: '1.2rem' }}>IL</div>
           <span>IND Location</span>

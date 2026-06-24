@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { FiPlus, FiEdit2, FiTrash2, FiUpload } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 import api from '../api/axios';
+import { optimiserImage } from '../utils/image';
 
 const AdminCars = () => {
   const [voitures, setVoitures] = useState([]);
@@ -154,7 +155,7 @@ const AdminCars = () => {
           <div key={v._id} className="card">
             <img
               className="card-img"
-              src={v.image || 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=400&q=60'}
+              src={optimiserImage(v.image, { w: 400, h: 200 }) || 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=400&q=60'}
               alt={v.nom}
             />
             <div className="card-body">
