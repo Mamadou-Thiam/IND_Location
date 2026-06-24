@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard';
 import Cars from './pages/Cars';
 import Reservations from './pages/Reservations';
 import AdminCars from './pages/AdminCars';
+import Landing from './pages/Landing';
 
 const AppLayout = ({ children }) => (
   <>
@@ -79,8 +80,8 @@ const AppRoutes = () => {
         }
       />
 
-      <Route path="/" element={<Navigate to="/connexion" />} />
-      <Route path="*" element={<Navigate to="/connexion" />} />
+      <Route path="/" element={<Landing />} />
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 };
