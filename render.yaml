@@ -4,7 +4,7 @@ services:
     env: node
     region: frankfurt
     plan: free
-    buildCommand: cd frontend && npm install && npm run build:prod && cd ../backend && npm install
+    buildCommand: cd backend && npm install
     startCommand: cd backend && npm start
     envVars:
       - key: NODE_ENV
@@ -21,3 +21,21 @@ services:
         sync: false
       - key: CLOUDINARY_API_SECRET
         sync: false
+      - key: FRONTEND_URL
+        value: https://ind-location.onrender.com
+
+  - type: static
+    name: ind-location-frontend
+    region: frankfurt
+    buildCommand: cd frontend && npm install && npm run build:prod
+    staticPublishPath: ./frontend/dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://ind-location-api.onrender.com/api
+    routes:
+      - type: rewrite
+        source: /api/*
+        destination: https://ind-location-api.onrender.com/api/:splat
+      - type: rewrite
+        source: /*
+        destination: /index.html

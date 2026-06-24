@@ -1,4 +1,3 @@
-const path = require('path');
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
@@ -19,21 +18,14 @@ connectDB();
 
 const app = express();
 
-app.use(cors());
+const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:3000';
+app.use(cors({ origin: frontendUrl }));
 app.use(express.json());
 
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/voitures', require('./routes/carRoutes'));
 app.use('/api/reservations', require('./routes/reservationRoutes'));
 app.use('/api/upload', require('./routes/uploadRoutes'));
-
-if (process.env.NODE_ENV === 'production') {
-  const frontendDist = path.join(__dirname, '..', 'frontend', 'dist');
-  app.use(express.static(frontendDist));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(frontendDist, 'index.html'));
-  });
-}
 
 app.get('/api', (req, res) => {
   res.json({ message: 'API IND Location' });
