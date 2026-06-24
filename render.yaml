@@ -4,8 +4,9 @@ services:
     env: node
     region: frankfurt
     plan: free
-    buildCommand: cd backend && npm install
-    startCommand: cd backend && npm start
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
@@ -27,8 +28,9 @@ services:
   - type: static
     name: ind-location-frontend
     region: frankfurt
-    buildCommand: cd frontend && npm install && npm run build:prod
-    staticPublishPath: ./frontend/dist
+    rootDir: frontend
+    buildCommand: npm install && npm run build:prod
+    staticPublishPath: dist
     envVars:
       - key: VITE_API_URL
         value: https://ind-location-api.onrender.com/api
